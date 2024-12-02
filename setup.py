@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="gitf",  # Name of your package
-    version="1.0.0",  # Package version
+    version="1.0.1",  # Package version
     description="A utility program to use to modify a single file from you github repository",  # Short description
     author="John Delvin",  # Author name,
     author_email="johndelvin51@gmail.com",  # Author email
@@ -11,7 +11,7 @@ setup(
     package_dir={"": "src"},
     entry_points={
         'console_scripts': [
-            'gitf = main:main',
+            'gitf=gift:main',
         ]},
     install_requires=[  # List of dependencies your project needs
         "requests"
