@@ -31,11 +31,6 @@ def main():
         default="commited changes",
     )
     parser.add_argument(
-        "-f",
-        type=str,
-        help="path to file should be same as the path in your github repository",
-    )
-    parser.add_argument(
         "-p",
         type=bool,
         help="whether ypu want to pull a file from github repository",
@@ -51,7 +46,6 @@ def main():
         BRANCH = dbs["BRANCH"]
         TOKEN = args.t
         MESSAGE = args.m
-        FILE_PATH = CURRENT_WORKING_DIR + "/" + args.f
         if args.p:
             make_git_commit(CURRENT_WORKING_DIR, MESSAGE)
             with open(CURRENT_WORKING_DIR + "/filePathModified.txt", "r") as fPaths:
@@ -72,7 +66,6 @@ def main():
         BRANCH = args.b
         TOKEN = args.t
         MESSAGE = args.m
-        FILE_PATH = CURRENT_WORKING_DIR + "/" + args.f
         if args.p:
             make_git_commit(CURRENT_WORKING_DIR, MESSAGE)
             with open(CURRENT_WORKING_DIR + "/filePathModified.txt", "r") as fPaths:
