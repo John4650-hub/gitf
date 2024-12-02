@@ -1,5 +1,5 @@
-from gitf_modules.push import pushFileModification
-from gitf_modules.commit import make_git_commit
+from gitf.gitf_modules.push import pushFileModification
+from gitf.gitf_modules.commit import make_git_commit
 import os
 import json
 import argparse
