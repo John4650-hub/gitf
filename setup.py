@@ -7,19 +7,13 @@ setup(
     author="John Delvin",  # Author name,
     author_email="johndelvin51@gmail.com",  # Author email
     url="https://github.com/john4650-hub/gitf",  # URL to your project (e.g., GitHub repo)
-    packages=find_packages(where="src"),  # Automatically find and include all packages
-    package_dir={"": "src"},
+    packages=find_packages(),  # Automatically find and include all packages
     entry_points={
         'console_scripts': [
-            'gitf=src.main:main',
+            'gitf=gitf.main:main',
         ]},
     install_requires=[  # List of dependencies your project needs
         "requests"
     ],
-    classifiers=[  # Metadata for PyPI
-        "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: linux",
-    ],
-    python_requires=">=3.5",  # Minimum Python version required
+    python_requires=">=3.5"  # Minimum Python version required
 )
