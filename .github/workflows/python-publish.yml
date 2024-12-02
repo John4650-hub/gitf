@@ -24,7 +24,7 @@ jobs:
 
       - name: Upload distributions
         run: |
-          gh release create "${{ github.run_number }}.0.0" dist/*
+          gh release create "1.0.${{ github.run_number }}" dist/*
         env:
           GITHUB_TOKEN: ${{ secrets.TK }}
         shell: bash
