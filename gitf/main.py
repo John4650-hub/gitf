@@ -59,7 +59,7 @@ def main():
     else:
         parser.add_argument("-r", type=str, help="github repository name")
         parser.add_argument("-w", type=str, help="owners name")
-        parser.add_argument("-b", type=bool, help="branch name", default=True)
+        parser.add_argument("-b", type=str, help="branch name")
         args = parser.parse_args()
         REPO_NAME = args.r
         REPO_OWNER = args.w
