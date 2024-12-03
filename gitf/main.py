@@ -90,8 +90,8 @@ def main():
                 data["BRANCH"] = BRANCH
                 with open(CURRENT_WORKING_DIR + "/.gitfConfig.json", "w") as gtfConfig:
                     json.dump(data, gtfConfig)
-                with open(CURRENT_WORKING_DIR + "/.gitignore", "a") as ignoreFile:
-                    ignoreFile.write("\n" + ".gitfConfig.json")
+                with open(CURRENT_WORKING_DIR + "/.gitignore", "w") as ignoreFile:
+                    ignoreFile.write("filePathModified.txt"+"\n" + ".gitfConfig.json")
 
 
 if __name__ == "__main__":
