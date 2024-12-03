@@ -9,11 +9,10 @@ setup(
     url="https://github.com/john4650-hub/gitf",  # URL to your project (e.g., GitHub repo)
     packages=find_packages(),  # Automatically find and include all packages
     entry_points={
-        'console_scripts': [
-            'gitf=gitf.main:main',
-        ]},
-    install_requires=[  # List of dependencies your project needs
-        "requests"
-    ],
-    python_requires=">=3.5"  # Minimum Python version required
+        "console_scripts": [
+            "gitf=gitf.main:main",
+        ]
+    },
+    install_requires=["requests"],  # List of dependencies your project needs
+    python_requires=">=3.5",  # Minimum Python version required
 )

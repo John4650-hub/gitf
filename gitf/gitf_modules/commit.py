@@ -1,11 +1,12 @@
 import subprocess
 import os
 
+
 def make_git_commit(CURRENT_WORKING_DIR, message):
     # Ensure the working directory is valid
     if not os.path.isdir(CURRENT_WORKING_DIR):
         raise ValueError(f"Invalid directory: {CURRENT_WORKING_DIR}")
-    
+
     # Change the current working directory to the specified directory
     original_cwd = os.getcwd()
     os.chdir(CURRENT_WORKING_DIR)

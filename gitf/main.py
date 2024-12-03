@@ -15,13 +15,15 @@ def is_configFile_exists():
     else:
         return False
 
+
 def main():
     parser = argparse.ArgumentParser(
         description="""
         This is a utility to make commits to
          a github repository to specific files
          rather than the whole repository
-        """
+        """,
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument("-t", type=str, help="your github personal access token")
     parser.add_argument(
@@ -31,10 +33,16 @@ def main():
         default="commited changes",
     )
     parser.add_argument(
-        "-p",
-        type=bool,
-        help="whether ypu want to pull a file from github repository",
+        "--push",
+        action="store_false",
+        help="\nwhether you want to push a file from github repository",
         default=True,
+    )
+    parser.add_argument(
+        "--save",
+        action="store_true",
+        help="\nSave the Owner's Name , Branch and Repository Name by default it's set",
+        default=False,
     )
 
     if is_configFile_exists():
@@ -46,12 +54,12 @@ def main():
         BRANCH = dbs["BRANCH"]
         TOKEN = args.t
         MESSAGE = args.m
-        if args.p:
+        if args.push:
             make_git_commit(CURRENT_WORKING_DIR, MESSAGE)
             with open(CURRENT_WORKING_DIR + "/filePathModified.txt", "r") as fPaths:
                 [
                     pushFileModification(
-                        TOKEN, BRANCH, REPO_OWNER, REPO_NAME, path.strip(), "done"
+                        TOKEN, BRANCH, REPO_OWNER, REPO_NAME, path.strip(), MESSAGE
                     )
                     for path in fPaths.readlines()
                 ]
@@ -71,16 +79,20 @@ def main():
             with open(CURRENT_WORKING_DIR + "/filePathModified.txt", "r") as fPaths:
                 [
                     pushFileModification(
-                        TOKEN, BRANCH, REPO_OWNER, REPO_NAME, path.strip(), "done"
+                        TOKEN, BRANCH, REPO_OWNER, REPO_NAME, path.strip(), MESSAGE
                     )
                     for path in fPaths.readlines()
                 ]
-            data = {}
-            data["REPO_NAME"] = REPO_NAME
-            data["REPO_OWNER"] = REPO_OWNER
-            data["BRANCH"] = BRANCH
-            with open(CURRENT_WORKING_DIR + "/.gitfConfig.json", "w") as gtfConfig:
-                json.dump(data, gtfConfig)
+            if args.save:
+                data = {}
+                data["REPO_NAME"] = REPO_NAME
+                data["REPO_OWNER"] = REPO_OWNER
+                data["BRANCH"] = BRANCH
+                with open(CURRENT_WORKING_DIR + "/.gitfConfig.json", "w") as gtfConfig:
+                    json.dump(data, gtfConfig)
+                with open(CURRENT_WORKING_DIR + "/.gitignore", "a") as ignoreFile:
+                    ignoreFile.write("\n" + ".gitfConfig.json")
+
 
 if __name__ == "__main__":
     main()
