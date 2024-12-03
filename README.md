@@ -1,4 +1,4 @@
-##Gitf
+# Gitf
 This is a utility program to aid in modifying single file in a chosen directory
 
 ```bash
