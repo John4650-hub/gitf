@@ -1,8 +1,7 @@
 name: Build Gitf
 
 on:
-  pull_request:
-    branches: ["main"]
+  workflow_dispatch:
 
 jobs:
   release-build:
