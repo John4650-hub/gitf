@@ -33,12 +33,6 @@ def main():
         default="commited changes",
     )
     parser.add_argument(
-        "--push",
-        action="store_false",
-        help="\nwhether you want to push a file from github repository",
-        default=True,
-    )
-    parser.add_argument(
         "--save",
         action="store_true",
         help="\nSave the Owner's Name , Branch and Repository Name by default it's set",
@@ -54,15 +48,14 @@ def main():
         BRANCH = dbs["BRANCH"]
         TOKEN = args.t
         MESSAGE = args.m
-        if args.push:
-            make_git_commit(CURRENT_WORKING_DIR, MESSAGE)
-            with open(CURRENT_WORKING_DIR + "/filePathModified.txt", "r") as fPaths:
-                [
-                    pushFileModification(
-                        TOKEN, BRANCH, REPO_OWNER, REPO_NAME, path.strip(), MESSAGE
-                    )
-                    for path in fPaths.readlines()
-                ]
+        make_git_commit(CURRENT_WORKING_DIR, MESSAGE)
+        with open(CURRENT_WORKING_DIR + "/filePathModified.txt", "r") as fPaths:
+            [
+                pushFileModification(
+                    TOKEN, BRANCH, REPO_OWNER, REPO_NAME, path.strip(), MESSAGE
+                )
+                for path in fPaths.readlines()
+            ]
 
     else:
         parser.add_argument("-r", type=str, help="github repository name")
@@ -74,24 +67,23 @@ def main():
         BRANCH = args.b
         TOKEN = args.t
         MESSAGE = args.m
-        if args.p:
-            make_git_commit(CURRENT_WORKING_DIR, MESSAGE)
-            with open(CURRENT_WORKING_DIR + "/filePathModified.txt", "r") as fPaths:
-                [
-                    pushFileModification(
-                        TOKEN, BRANCH, REPO_OWNER, REPO_NAME, path.strip(), MESSAGE
-                    )
-                    for path in fPaths.readlines()
-                ]
-            if args.save:
-                data = {}
-                data["REPO_NAME"] = REPO_NAME
-                data["REPO_OWNER"] = REPO_OWNER
-                data["BRANCH"] = BRANCH
-                with open(CURRENT_WORKING_DIR + "/.gitfConfig.json", "w") as gtfConfig:
-                    json.dump(data, gtfConfig)
-                with open(CURRENT_WORKING_DIR + "/.gitignore", "w") as ignoreFile:
-                    ignoreFile.write("filePathModified.txt"+"\n" + ".gitfConfig.json")
+        make_git_commit(CURRENT_WORKING_DIR, MESSAGE)
+        with open(CURRENT_WORKING_DIR + "/filePathModified.txt", "r") as fPaths:
+            [
+                pushFileModification(
+                    TOKEN, BRANCH, REPO_OWNER, REPO_NAME, path.strip(), MESSAGE
+                )
+                for path in fPaths.readlines()
+            ]
+        if args.save:
+            data = {}
+            data["REPO_NAME"] = REPO_NAME
+            data["REPO_OWNER"] = REPO_OWNER
+            data["BRANCH"] = BRANCH
+            with open(CURRENT_WORKING_DIR + "/.gitfConfig.json", "w") as gtfConfig:
+                json.dump(data, gtfConfig)
+            with open(CURRENT_WORKING_DIR + "/.gitignore", "w") as ignoreFile:
+                ignoreFile.write("filePathModified.txt"+"\n" + ".gitfConfig.json")
 
 
 if __name__ == "__main__":
