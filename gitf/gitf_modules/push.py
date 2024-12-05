@@ -1,5 +1,10 @@
 import requests
 from base64 import b64encode
+import subprocess
+
+
+def rm(file):
+    subprocess.run(["rm", file])
 
 
 # push updates.

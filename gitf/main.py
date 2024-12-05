@@ -1,5 +1,5 @@
-from gitf.gitf_modules.push import pushFileModification
-from gitf.gitf_modules.commit import make_git_commit, assume_unchanged
+from gitf.gitf_modules.push import pushFileModification, rm
+from gitf.gitf_modules.commit import make_git_commit, save_repo_user_data
 import os
 import json
 import argparse
@@ -56,6 +56,7 @@ def main():
                 )
                 for path in fPaths.readlines()
             ]
+        rm("filePathModified.txt")
 
     else:
         parser.add_argument("-r", type=str, help="github repository name")
@@ -75,6 +76,7 @@ def main():
                 )
                 for path in fPaths.readlines()
             ]
+        rm("filePathModified.txt")
         if args.save:
             data = {}
             data["REPO_NAME"] = REPO_NAME
@@ -82,7 +84,7 @@ def main():
             data["BRANCH"] = BRANCH
             with open(CURRENT_WORKING_DIR + "/.gitfConfig.json", "w") as gtfConfig:
                 json.dump(data, gtfConfig)
-            assume_unchanged()
+            save_repo_user_data()
 
 
 if __name__ == "__main__":

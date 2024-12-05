@@ -1,12 +1,12 @@
 import subprocess
 import os
 
-def assume_unchanged():
-    git_command_add = ["git", "add", "."]
-    subprocess.run(git_command_add, capture_output=True, text=True)
-    git_ignore = ["git", "update-index","--assume-unchanged", ".gitfConfig.json","filePathModified.txt"]
-    subprocess.run(git_command_ignore, capture_output=True, text=True)
 
+def assume_unchanged():
+    git_command_add = ["git", "add", ".gitfConfig.json"]
+    subprocess.run(git_command_add, capture_output=True, text=True)
+    git_ignore = ["git", "commit", "-m", '"done configuretaion saved"']
+    subprocess.run(git_command_ignore, capture_output=True, text=True)
 
 
 def make_git_commit(CURRENT_WORKING_DIR, message):
@@ -29,9 +29,16 @@ def make_git_commit(CURRENT_WORKING_DIR, message):
                     f.write(line[3:] + "\n")
 
         # Add all changes to the staging area
+        git_command_assume_unchange = [
+            "git",
+            "update-index",
+            "--assume-unchanged",
+            "filePathModified.txt",
+        ]
+        subprocess.run(git_command_assume_unchange, capture_output=True, text=True)
+
         git_command_add = ["git", "add", "."]
         subprocess.run(git_command_add, capture_output=True, text=True)
-
         # Commit the changes with the provided message
         git_command_commit = ["git", "commit", "-m", message]
         subprocess.run(git_command_commit, capture_output=True, text=True)
