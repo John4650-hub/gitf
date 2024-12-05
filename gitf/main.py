@@ -9,8 +9,8 @@ FILE_PATH = CURRENT_WORKING_DIR + "/.gitfConfig.json"
 
 
 # returns true or false
-def is_configFile_exists():
-    if os.path.isfile(FILE_PATH):
+def is_File_exists(flp):
+    if os.path.isfile(flp):
         return True
     else:
         return False
@@ -39,7 +39,7 @@ def main():
         default=False,
     )
 
-    if is_configFile_exists():
+    if is_File_exists(FILE_PATH):
         with open(FILE_PATH, "r") as config:
             dbs = json.load(config)
         args = parser.parse_args()
@@ -48,7 +48,8 @@ def main():
         BRANCH = dbs["BRANCH"]
         TOKEN = args.t
         MESSAGE = args.m
-        make_git_commit(CURRENT_WORKING_DIR, MESSAGE)
+        if.not is_File_exists(CURRENT_WORKING_DIR+"/filePathModified.txt"):
+            make_git_commit(CURRENT_WORKING_DIR, MESSAGE)
         with open(CURRENT_WORKING_DIR + "/filePathModified.txt", "r") as fPaths:
             [
                 pushFileModification(
@@ -68,7 +69,8 @@ def main():
         BRANCH = args.b
         TOKEN = args.t
         MESSAGE = args.m
-        make_git_commit(CURRENT_WORKING_DIR, MESSAGE)
+        if not is_File_exists(CURRENT_WORKING_DIR+"/filePathModified.txt"):
+            make_git_commit(CURRENT_WORKING_DIR, MESSAGE)
         with open(CURRENT_WORKING_DIR + "/filePathModified.txt", "r") as fPaths:
             [
                 pushFileModification(
