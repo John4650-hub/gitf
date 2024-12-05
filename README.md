@@ -2,7 +2,7 @@
   <img src="https://raw.githubusercontent.com/John4650-hub/gitf/refs/heads/main/logo/gitf.jpeg" alt="Logo" width="200">
 </div>
 <h2 align="center">Gitf</h2>
-This is a utility program to aid in modifying single file in a chosen directory
+This is a utility program to aid in modifying specific files in a chosen github repository.
 
 ```bash
 gitf --help
