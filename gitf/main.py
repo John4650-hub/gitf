@@ -1,5 +1,5 @@
 from gitf.gitf_modules.push import pushFileModification
-from gitf.gitf_modules.commit import make_git_commit
+from gitf.gitf_modules.commit import make_git_commit, assume_unchanged
 import os
 import json
 import argparse
@@ -82,8 +82,7 @@ def main():
             data["BRANCH"] = BRANCH
             with open(CURRENT_WORKING_DIR + "/.gitfConfig.json", "w") as gtfConfig:
                 json.dump(data, gtfConfig)
-            with open(CURRENT_WORKING_DIR + "/.gitignore", "w") as ignoreFile:
-                ignoreFile.write("filePathModified.txt"+"\n" + ".gitfConfig.json")
+            assume_unchanged()
 
 
 if __name__ == "__main__":

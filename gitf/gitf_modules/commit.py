@@ -1,6 +1,13 @@
 import subprocess
 import os
 
+def assume_unchanged():
+    git_command_add = ["git", "add", "."]
+    subprocess.run(git_command_add, capture_output=True, text=True)
+    git_ignore = ["git", "update-index","--assume-unchanged", ".gitfConfig.json","filePathModified.txt"]
+    subprocess.run(git_command_ignore, capture_output=True, text=True)
+
+
 
 def make_git_commit(CURRENT_WORKING_DIR, message):
     # Ensure the working directory is valid
@@ -10,7 +17,6 @@ def make_git_commit(CURRENT_WORKING_DIR, message):
     # Change the current working directory to the specified directory
     original_cwd = os.getcwd()
     os.chdir(CURRENT_WORKING_DIR)
-
     try:
         # Check for modified files
         git_command_status = ["git", "status", "--porcelain"]
