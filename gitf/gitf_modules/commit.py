@@ -2,7 +2,7 @@ import subprocess
 import os
 
 
-def assume_unchanged():
+def save_repo_user_data():
     git_command_add = ["git", "add", ".gitfConfig.json"]
     subprocess.run(git_command_add, capture_output=True, text=True)
     git_ignore = ["git", "commit", "-m", '"done configuretaion saved"']
