@@ -48,7 +48,7 @@ def main():
         BRANCH = dbs["BRANCH"]
         TOKEN = args.t
         MESSAGE = args.m
-        if.not is_File_exists(CURRENT_WORKING_DIR+"/filePathModified.txt"):
+        if.not(is_File_exists(CURRENT_WORKING_DIR+"/filePathModified.txt")):
             make_git_commit(CURRENT_WORKING_DIR, MESSAGE)
         with open(CURRENT_WORKING_DIR + "/filePathModified.txt", "r") as fPaths:
             [
@@ -69,7 +69,7 @@ def main():
         BRANCH = args.b
         TOKEN = args.t
         MESSAGE = args.m
-        if not is_File_exists(CURRENT_WORKING_DIR+"/filePathModified.txt"):
+        if not(is_File_exists(CURRENT_WORKING_DIR+"/filePathModified.txt")):
             make_git_commit(CURRENT_WORKING_DIR, MESSAGE)
         with open(CURRENT_WORKING_DIR + "/filePathModified.txt", "r") as fPaths:
             [
