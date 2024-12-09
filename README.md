@@ -40,11 +40,6 @@ pip install requests
 ### USAGE
 Before using gitf make sure you create a new directory
 Then enter the new directory and run `git init`
-RUN THE FOLLOWING COMMAND
-
-```bash
-touch .gitignore && git add .gitignore && git commit -m "created .igitignore"
-```
 
 Create the file you want to modify with the same name and path for example
 if in your remote github repository you have the following directory structure

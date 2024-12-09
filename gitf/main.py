@@ -64,11 +64,11 @@ def main():
         parser.add_argument("-w", type=str, help="owners name")
         parser.add_argument("-b", type=str, help="branch name")
         args = parser.parse_args()
-        REPO_NAME = args.r
-        REPO_OWNER = args.w
-        BRANCH = args.b
-        TOKEN = args.t
-        MESSAGE = args.m
+        REPO_NAME = args.r #repository
+        REPO_OWNER = args.w #owner
+        BRANCH = args.b #branch
+        TOKEN = args.t #token
+        MESSAGE = args.m #message
         if not(is_File_exists(CURRENT_WORKING_DIR+"/filePathModified.txt")):
             make_git_commit(CURRENT_WORKING_DIR, MESSAGE)
         with open(CURRENT_WORKING_DIR + "/filePathModified.txt", "r") as fPaths:
