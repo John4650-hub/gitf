@@ -72,6 +72,7 @@ Then run one of the commands below as required
 gitf -t [GITHUB_PERSONAL_TOKEN] -w [GITHUB_USER_NAME] -r [USER_GITHUB_REPOSITORY] -b [BRANCH_NAME] -m "[message_to_attach to changes made]" 
 ```
 If you include `--save`, a file called `.gitfConfig.json` is automatically created and contains the `GITHUB_USER_NAME`, `USER_GITHUB_REPOSITORY`, and `BRANCH_NAME`.
+THE BRANCH MUST BE SET THE DEFAULT BRANCH OTHERWISE YOU WILL GET ERRORS
 This means next time you run `gitf` these options must not be included in your command
 Below is the command that must be used.
 ```bash
